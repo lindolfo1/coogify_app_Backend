@@ -1,4 +1,3 @@
-import http from "http";
 import initializeServer from "./server/server.js";
 
 const server = initializeServer();

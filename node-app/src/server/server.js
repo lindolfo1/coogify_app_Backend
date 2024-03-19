@@ -1,6 +1,5 @@
 import http from "http";
 import { handleRequest } from "../routes/routeHandler.js";
-// import { handleRequest } from "./requestHandler.js";
 
 // Function to initialize the server
 export default function initializeServer() {
