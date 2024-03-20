@@ -17,11 +17,11 @@ export const PaymentMain = () => {
                 
           {/* Work in here */}
               <div className="flex flex-row">
-
                 <div className="items-center">
                 <div className="font-bold px-2">Payment Method</div>
                     {/* PAYMENT METHOD */}
                     <div className="block h-[380px] w-[500px] bg-[#656262] text-white rounded-xl px-5 py-5 mr-8">
+
                         <Link to="">
                           <div className="flex mb-4 h-30 w-70 hover:bg-[#ddc5fc] bg-[#d1c9db] shadow-md shadow-[#d0c2e2] rounded-xl px-2 py-2 ">
                             <img
