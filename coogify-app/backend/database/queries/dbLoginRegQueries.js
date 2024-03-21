@@ -29,11 +29,11 @@ export async function getPasswordByEmail(email) {
       return hashedPassword; // Return the hashed password
     } else {
       // No matching email found in the database
-      return null; // Or you can throw an error if you prefer
+      return null; 
     }
   } catch (err) {
     console.error('Error fetching password:', err.message);
-    return null; // Or you can throw an error if you prefer
+    return null; 
   }
 }
 

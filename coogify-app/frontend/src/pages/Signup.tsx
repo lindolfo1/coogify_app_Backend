@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import Logo from '../../public/images/Logo.svg';
+import Logo from '../../public/images/Logo.svg';
 import { Footer } from '../components/setup/Footer';
 import React from 'react';
 
@@ -22,18 +22,23 @@ export const Signup = () => {
       })
     );
     try {
-      const response = await fetch('http://localhost:3001/api/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          email,
-          password,
-        }),
-      });
+      const response = await fetch(
+        `http://${import.meta.env.VITE_HOST}:${
+          import.meta.env.VITE_BACKEND_PORT
+        }/api/register`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            firstName,
+            lastName,
+            email,
+            password,
+          }),
+        }
+      );
 
       console.log('Response:', response); // Add this line to check response
 
@@ -52,7 +57,13 @@ export const Signup = () => {
   return (
     <div className="w-full h-full absolute inset-0 bg-gradient-to-tr from-[#9E67E4] via-transparent to-[#212121] text-white overflow-hidden p-6">
       <Link to="/">
-        {/* <img src={Logo} alt="Coogify Logo" className="mx-auto pb-20 w-[70px]" /> */}
+        {
+          <img
+            src={Logo}
+            alt="Coogify Logo"
+            className="mx-auto pb-20 w-[70px]"
+          />
+        }
       </Link>
       <h1 className="text-4xl text-white text-center mb-5 ">Get Started</h1>
       <form
