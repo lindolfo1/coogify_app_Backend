@@ -17,9 +17,10 @@ export const PaymentMain = () => {
                 
           {/* Work in here */}
               <div className="flex flex-row">
+
+                {/* PAYMENT METHOD */}
                 <div className="items-center">
                 <div className="font-bold px-2">Payment Method</div>
-                    {/* PAYMENT METHOD */}
                     <div className="block h-[380px] w-[500px] bg-[#656262] text-white rounded-xl px-5 py-5 mr-8">
 
                         <Link to="">
@@ -104,10 +105,14 @@ export const PaymentMain = () => {
                     </div>
                   </div>
                 </div>
+
             </div>
 
+
+            
             <div className="flex flex-row">
-                {/* CHANGE CARD DETAILS */}
+
+              {/* CHANGE CARD DETAILS */}
                 <div className="items-center mb-12">
                   <div className="font-bold px-2">Change Card Details</div>
                   <div className="grid grid-cols-2 gap-y-4 gap-x-4 h-[335px] w-[700px] px-5 py-7 bg-[#656262] text-white rounded-xl mr-8">
@@ -140,10 +145,10 @@ export const PaymentMain = () => {
                   </div>
                 </div>
 
-
+                
+                {/* ADD PAYMENT */}
                 <div className="items-center">
                   <div className="font-bold px-2">Add Payment</div>
-                  {/* ADD PAYMENT */}
                   <div className="block h-[335px] w-[300px] px-5 py-7 bg-[#656262] text-white rounded-xl">
                     <div className="text-left px-1">Card Type</div>
                     <textarea className="caret-white border border-white focus:outline-none focus:border-white hover:bg-[#ddc5fc] bg-[#d1c9db] shadow-lg shadow-[#d0c2e2] h-[35px] w-[260px] mb-2 px-2 py-2 rounded-full transition duration-200 ease-in-out"></textarea>
@@ -158,6 +163,7 @@ export const PaymentMain = () => {
                     <textarea className="caret-white border border-white focus:outline-none focus:border-white hover:bg-[#ddc5fc] bg-[#d1c9db] shadow-lg shadow-[#d0c2e2] h-[35px] w-[260px] mb-2 px-2 py-2 rounded-full transition duration-200 ease-in-out"></textarea>
                   </div>
                 </div>
+
             </div>
 
 
