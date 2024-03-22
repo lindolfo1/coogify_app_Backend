@@ -38,7 +38,7 @@ export const SubscriptionMain = () => {
             </div>
             
           </div>
-          <div className="absolute top-0 right-52 text-2xl flex flex-col gap-4 items-center">
+          <div className="absolute top-0 right-52 text-2xl flex flex-col gap-4 items-center ">
             Current Plan
             <div className="bg-[#8C8C8C] w-96 h-96 px-9 py-9 rounded-lg pl-7 font-normal   ">
             <div>
@@ -47,7 +47,7 @@ export const SubscriptionMain = () => {
               <div className="text-center">Renewal Date:</div>
               </div>
               <div className="text-center">
-              <button className="bg-[#BA85FE] hover:bg-[#472670] text-white font-bold py-2 px-4 border border-blue-700 rounded ">
+              <button className="bg-[#BA85FE] hover:bg-[#472670] text-white font-bold py-2 px-4 border border-blue-700 rounded mt-40">
                       Cancel Trial
               </button>
               </div>
