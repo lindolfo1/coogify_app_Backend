@@ -1,42 +1,30 @@
-# COSC 3380: Database Systems Class Repository 💻
+# React + Tailwind + Node.js + TypeScript + Vite
 
-Welcome to the repository for the COSC 3380 Database class project. This application project is part of our coursework and collaboration in the Database class.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Team Members
+Currently, two official plugins are available:
 
-- Jacob Rangel (GitHub: [JacobUH](https://github.com/JacobUH))
-- Abdul Rafay Khan (GitHub: [arkhan24-cs](https://github.com/arkhan24-cs))
-- Shruthi Yenamagandla (GitHub: [Shruthi1935](https://github.com/Shruthi1935))
-- Diego Vera Garza (GitHub: [~](https://github.com/))
-- Emma U. Pham (GitHub: [EMMAPHA](https://github.com/EMMAPHA))
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Project Overview
+## Expanding the ESLint configuration
 
-<p align="center">
-  <img src="https://i.ibb.co/X25vK2W/Home-Page.png" width="48%" height="100%" alt="Image 1">
-  <img src="https://i.ibb.co/xFbwWzp/Dashboard-Page.png" width="48%" height="100%" alt="Image 2">
-</p>
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-Our project aims to display the uses of topics of database systems whether for someone who doesn't know anything or someone who has worked with databases before. Throughout the semester, we'll be collaboratively working on our web application, Coogify Music - The Online Music Library, to showcase our understanding of Database System principles.
+- Configure the top-level `parserOptions` property like this:
 
-## Getting Started
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
+}
+```
 
-Please read the README.md files for each Directory to make sure that you properly understand how each works in order to fully utilize applications or concepts within.
-
-## Contribution Guidelines
-
-- TBA
-
-## Project Structure
-
-Our repository is strucutred based off the courseload of the class. Inside you will find our web application and documents tailored to prompts for checkpoints given throughout the semester. Hope this helps for anyone curious about Database systems in the future!
-
-## Contact
-
-Feel free to reach out to any of our emails below!
-
-- Jacob Rangel [jacobrangel0628@gmail.com](https://jacobrangel0628@gmail.com)
-- Abdul Rafay Khan [a.rafaykhan2002@gmail.com](https://a.rafaykhan2002@gmail.com)
-- Shruthi Yenamagandla [yshruthi.14@gmail.com](https://yshruthi.14@gmail.com)
-- Diego Vera Garza [~]()
-- Emma U. Pham [emmauyentrinh@gmail.com](https://emmauyentrinh@gmail.com)
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
