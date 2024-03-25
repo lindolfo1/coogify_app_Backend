@@ -12,8 +12,17 @@ export const Setup = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (userType: string) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (userType: string) => {
     // Validate form data
     if (month && day && year) {
+      // Form is valid, navigate based on user type
+      if (userType === 'listener') {
+        navigate('/home'); // Navigate to home page for listener
+      } else if (userType === 'artist') {
+        navigate('/artistSetup'); // Navigate to artist setup page
+      }
       // Form is valid, navigate based on user type
       if (userType === 'listener') {
         navigate('/home'); // Navigate to home page for listener

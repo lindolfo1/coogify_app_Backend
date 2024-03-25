@@ -40,6 +40,8 @@ export const PaymentMain = () => {
         </div>
 
         <div className="rounded-xl md:h-[calc(100vh-140px)] h-auto flex flex-col gap-5 px-8 md:py-5 pb-20 pt-5">
+
+        <div className="rounded-xl md:h-[calc(100vh-140px)] h-auto flex flex-col gap-5 px-8 md:py-5 pb-20 pt-5">
           {/* Work in here */}
           <div className="flex flex-row justify-center">
             <div className="items-center">

@@ -1,10 +1,10 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import cover from '../../../public/images/8.png';
 import playButton from '../../../public/images/Play.png';
 import pauseButton from '../../../public/images/Pause.png';
 
 export const Player = () => {
-  const [volume, setVolume] = useState('70');
   const [play, setPlay] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -31,39 +31,10 @@ export const Player = () => {
     return () => clearInterval(intervalId);
   }, [play, totalDuration, isDragging]);
 
-  const progressBarWidth = (currentTime / totalDuration) * 100;
-
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  };
-
-  const handleProgressBarClick = (e: any) => {
-    const progressBar = e.currentTarget;
-    const clickPosition = e.clientX - progressBar.getBoundingClientRect().left;
-    const progressBarWidth = progressBar.offsetWidth;
-    const clickedTime = (clickPosition / progressBarWidth) * totalDuration;
-    setCurrentTime(clickedTime);
-  };
-
-  const handleDragStart = () => {
-    setIsDragging(true);
-  };
-
-  const handleDragMove = (e: any) => {
-    if (isDragging && !play) {
-      const progressBar = e.currentTarget;
-      const clickPosition =
-        e.clientX - progressBar.getBoundingClientRect().left;
-      const progressBarWidth = progressBar.offsetWidth;
-      const clickedTime = (clickPosition / progressBarWidth) * totalDuration;
-      setCurrentTime(clickedTime);
-    }
-  };
-
-  const handleDragEnd = () => {
-    setIsDragging(false);
   };
 
   return (
