@@ -5,6 +5,7 @@ import { createSession } from "../Session/sessionManager.js";
 import { getUserFromEmail } from "../database/queries/dbUserQueries.js";
 
 export default async function handler(req, res) {
+  console.log("registering");
   const { firstName, lastName, email, password } = req.body;
   const hashedInput = await hashPassword(password);
   if (
