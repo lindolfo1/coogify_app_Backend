@@ -1,8 +1,9 @@
 import pool from "../dbConnection.js";
+import { test } from "../dbConnection.js";
 
 export async function registerUser(email, userPassword, fName, lName, dob) {
   console.log("register user");
-  console.log(pool);
+  test();
   try {
     const [rows] = await pool.query(
       `INSERT INTO USER 
