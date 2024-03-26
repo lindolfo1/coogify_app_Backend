@@ -3,7 +3,7 @@ import { hashPassword } from "../middlewares/middleware.js";
 import { createSession } from "../Session/sessionManager.js";
 import { getUserFromEmail } from "../database/queries/dbUserQueries.js";
 
-export async function handler(req, res) {
+export default async function handler(req, res) {
   const { firstName, lastName, email, password } = req.body;
   const hashedInput = await hashPassword(password);
   if (

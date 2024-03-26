@@ -1,7 +1,7 @@
 import { insertArtist } from "../../database/queries/dbArtistQueries";
 import { extractSessionId, errorMessage } from "../../util/utilFunctions";
 
-export async function handler(req, res) {
+export default async function handler(req, res) {
   const { artistName } = req.body;
   const sessionID = extractSessionId(req);
   if (sessionID !== null) {

@@ -1,7 +1,7 @@
 import { extractUserID } from "../util/utilFunctions";
 import { insertPayment } from "../database/queries/dbUserQueries";
 
-export async function handler(req, res) {
+export default async function handler(req, res) {
   try {
     const userID = await extractUserID(req);
     await insertPayment(userID);

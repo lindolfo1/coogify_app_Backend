@@ -1,6 +1,6 @@
 import { selectSong } from "../../database/queries/dbFileQueries";
 
-export async function handler(req, res) {
+export default async function handler(req, res) {
   const { songName } = req.body;
   try {
     const songDetails = await selectSong(songName);

@@ -6,7 +6,7 @@ import {
   insertPlaylist,
 } from "../../database/queries/dbFileQueries";
 
-export async function handler(req, res) {
+export default async function handler(req, res) {
   upload.single("imageFile")(req, res, async (err) => {
     if (err instanceof multer.MulterError) {
       console.error("Multer error: ", err);

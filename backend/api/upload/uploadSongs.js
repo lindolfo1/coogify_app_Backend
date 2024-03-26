@@ -6,7 +6,7 @@ import {
   insertPlaylist,
 } from "../../database/queries/dbFileQueries";
 
-export async function handler(req, res) {
+export default async function handler(req, res) {
   upload.fields([
     { name: "mp3Files", maxCount: 50 },
     { name: "imageFile", maxCount: 1 },

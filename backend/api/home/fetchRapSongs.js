@@ -1,7 +1,7 @@
 import { selectRapSongs } from "../../database/queries/dbHomeQueries";
 import { errorMessage } from "../../util/utilFunctions";
 
-export async function handler(req, res) {
+export default async function handler(req, res) {
   try {
     const songs = await selectRapSongs();
     if (songs !== false) {

@@ -5,7 +5,7 @@ import { getUserFromEmail } from "../../database/queries/dbUserQueries.js";
 import { createSession } from "../../Session/sessionManager.js";
 import { deleteSession } from "../../database/queries/dbAuthQueries.js";
 
-export async function handler(req, res) {
+export default async function handler(req, res) {
   const { email, password } = req.body;
 
   try {
