@@ -2,6 +2,7 @@ import pool from "../dbConnection.js";
 
 export async function registerUser(email, userPassword, fName, lName, dob) {
   console.log("register user");
+  console.log(pool);
   try {
     const [rows] = await pool.query(
       `INSERT INTO USER 
