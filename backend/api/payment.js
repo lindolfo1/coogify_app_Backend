@@ -1,3 +1,4 @@
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import { extractUserID } from "../util/utilFunctions";
 import { insertPayment } from "../database/queries/dbUserQueries";
 

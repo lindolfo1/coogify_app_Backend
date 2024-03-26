@@ -1,3 +1,4 @@
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import { insertArtist } from "../../database/queries/dbArtistQueries";
 import { extractSessionId, errorMessage } from "../../util/utilFunctions";
 

@@ -1,3 +1,4 @@
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import { selectSong } from "../../database/queries/dbFileQueries";
 
 export default async function handler(req, res) {

@@ -1,3 +1,4 @@
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import multer from "multer";
 import { baseURL, storage, upload } from "./utilFunctions";
 import { extractUserID, extractArtistID } from "../../util/utilFunctions";
