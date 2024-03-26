@@ -1,40 +1,4 @@
-// Contains database queries related to user management, such as fetching user profiles,
-// updating user information, and handling user-related operations.
-
 import pool from '../dbConnection.js';
-
-export async function registerUser(params) {
-  const { email, userPassword, firstName, lastName, dateOfBirth } = params;
-  console.log(params);
-  try {
-    await pool.query(
-      `INSERT INTO USER 
-       (email, userPassword, firstName, lastName, dateOfBirth)
-       VALUES (?, ?, ?, ?, ?)`,
-      [email, userPassword, firstName, lastName, dateOfBirth]
-    );
-    console.log('User inserted successfully');
-
-    // Get the userID of the newly inserted user
-    const [userRows] = await pool.query(
-      `SELECT userID FROM USER WHERE email = ?`,
-      [email]
-    );
-    const userID = userRows[0].userID;
-
-    // Insert a row into the SUBSCRIPTION table
-    await pool.query(
-      `INSERT INTO SUBSCRIPTION 
-       (userID, subscriptionType, subscriptionActive, renewDate)
-       VALUES (?, 'Paid', 0, CURRENT_DATE())`,
-      [userID]
-    );
-
-    console.log('Subscription inserted successfully');
-  } catch (err) {
-    console.error(err.message);
-  }
-}
 
 export async function getUserFromEmail(email_promise) {
   const email = await email_promise;
@@ -78,19 +42,3 @@ export async function insertPayment(userID_promise) {
     console.error(err.message);
   }
 }
-
-// export async function registerUser(params) {
-//   const { email, userPassword, firstName, lastName, dateOfBirth } = params;
-//   console.log(params);
-//   try {
-//     const [rows] = await pool.query(
-//       `INSERT INTO USER
-//     (email, userPassword, firstName, lastName, dateOfBirth)
-//      VALUES (?, ?, ?, ?, ?)`,
-//       [email, userPassword, firstName, lastName, dateOfBirth]
-//     );
-//     console.log('User inserted successfully');
-//   } catch (err) {
-//     console.error(err.message);
-//   }
-// }

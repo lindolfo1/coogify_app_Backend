@@ -2,7 +2,7 @@
 import * as logregq from "../../database/queries/dbLoginRegQueries.js";
 import { hashPassword } from "../middlewares/middleware.js";
 import { createSession } from "../Session/sessionManager.js";
-import { getUserFromEmail } from "../database/queries/dbUserQueries.js";
+import { getUserFromEmail } from "/database/queries/dbUserQueries.js";
 
 export default async function handler(req, res) {
   console.log("registering");
