@@ -1,9 +1,9 @@
 import pool from "../dbConnection.js";
 import { test } from "../dbConnection.js";
 
-export async function registerUser(email, userPassword, fName, lName, dob) {
+export async function 
+registerUser(email, userPassword, fName, lName, dob) {
   console.log("register user");
-  test();
   try {
     const [rows] = await pool.query(
       `INSERT INTO USER 
@@ -12,6 +12,7 @@ export async function registerUser(email, userPassword, fName, lName, dob) {
       [email, userPassword, fName, lName, dob]
     );
     console.log("User inserted successfully");
+    console.log(rows);
 
     // Extract the userID
     const userID = rows.insertId;
@@ -51,19 +52,3 @@ export async function getPasswordByEmail(email) {
     return null; // Or you can throw an error if you prefer
   }
 }
-
-// export async function registerUser(email, userPassword, fName, lName, dob) {
-//   try {
-//     const [rows] = await pool.query(
-//       `INSERT INTO USER
-//     (email, userPassword, firstName, lastName, dateOfBirth)
-//      VALUES (?, ?, ?, ?, ?)`,
-//       [email, userPassword, fName, lName, dob]
-//     );
-//     console.log('User inserted successfully');
-//     return true;
-//   } catch (err) {
-//     console.error(err.message);
-//     return false;
-//   }
-// }
