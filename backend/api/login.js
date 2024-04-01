@@ -1,7 +1,7 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import bcrypt from "bcrypt";
 import * as logregq from "../../database/queries/dbLoginRegQueries.js";
-import { hashPassword } from "../../middlewares/middleware.js";
+import { hashPassword } from "../util/utilFunctions.js";
 import { getUserFromEmail } from "../../database/queries/dbUserQueries.js";
 import { createSession } from "../../Session/sessionManager.js";
 import { deleteSession } from "../../database/queries/dbAuthQueries.js";

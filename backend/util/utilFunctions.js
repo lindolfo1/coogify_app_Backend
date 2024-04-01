@@ -1,20 +1,21 @@
-import { getUserFromSession } from '../database/queries/dbAuthQueries.js';
-import { selectArtistIDfromUserID } from '../database/queries/dbArtistQueries.js';
+import { getUserFromSession } from "../database/queries/dbAuthQueries.js";
+import { selectArtistIDfromUserID } from "../database/queries/dbArtistQueries.js";
+import bcrypt from "bcryptjs";
 
 export function errorMessage(res, theError, message) {
   console.error(`${message}: ${theError}`);
-  res.writeHead(500, { 'Content-Type': 'text/plain' });
-  res.end('Internal server error');
+  res.writeHead(500, { "Content-Type": "text/plain" });
+  res.end("Internal server error");
 }
 
 export function extractSessionId(req) {
   // Check if the Authorization header exists
   if (req.headers && req.headers.authorization) {
     // Split the Authorization header value by space
-    const parts = req.headers.authorization.split(' ');
+    const parts = req.headers.authorization.split(" ");
 
     // Check if the Authorization header has two parts and the first part is "Bearer"
-    if (parts.length === 2 && parts[0] === 'Bearer') {
+    if (parts.length === 2 && parts[0] === "Bearer") {
       // Return the second part, which should be the session ID
       return parts[1];
     }
@@ -34,4 +35,13 @@ export async function extractArtistID(req) {
   const userID = await extractUserID(req);
   const artistID = await selectArtistIDfromUserID(userID);
   return artistID;
+}
+export async function hashPassword(password) {
+  try {
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+    return hashedPassword; // Return the hashed password
+  } catch (error) {
+    console.error("Error hashing password:", error);
+  }
 }

@@ -1,6 +1,6 @@
 // import { NowRequest, NowResponse } from "@vercel/node";
 import * as logregq from "../database/queries/dbLoginRegQueries.js";
-import { hashPassword } from "../middlewares/middleware.js";
+import { hashPassword } from "../util/utilFunctions.js";
 import { createSession } from "../Session/sessionManager.js";
 import { getUserFromEmail } from "../database/queries/dbUserQueries.js";
 import jsonParserMiddleware from "../middlewares/jsonParser.js";
