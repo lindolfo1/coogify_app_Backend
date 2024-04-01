@@ -1,6 +1,6 @@
 import { getUserFromSession } from "../database/queries/dbAuthQueries.js";
 import { selectArtistIDfromUserID } from "../database/queries/dbArtistQueries.js";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 
 export function errorMessage(res, theError, message) {
   console.error(`${message}: ${theError}`);
