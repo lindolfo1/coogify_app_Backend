@@ -1,8 +1,13 @@
-import { VercelRequest, VercelResponse } from "@vercel/node";
 import { insertArtist } from "../../database/queries/dbArtistQueries";
 import { extractSessionId, errorMessage } from "../../util/utilFunctions";
+import jsonParserMiddleware from "../../middlewares/jsonParser.js";
+import hashPasswordMiddleware from "../../middlewares/hashPassword.js";
+import authenticateMiddleware from "../../middlewares/authenticate.js";
 
 export default async function handler(req, res) {
+  jsonParserMiddleware(req, res);
+  hashPasswordMiddleware(req, res, next);
+  authenticateMiddleware(req, res, next);
   const { artistName } = req.body;
   const sessionID = extractSessionId(req);
   if (sessionID !== null) {

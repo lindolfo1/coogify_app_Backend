@@ -3,8 +3,14 @@ import * as logregq from "../database/queries/dbLoginRegQueries.js";
 import { hashPassword } from "../middlewares/middleware.js";
 import { createSession } from "../Session/sessionManager.js";
 import { getUserFromEmail } from "../database/queries/dbUserQueries.js";
+import jsonParserMiddleware from "../../middlewares/jsonParser.js";
+import hashPasswordMiddleware from "../../middlewares/hashPassword.js";
+import authenticateMiddleware from "../../middlewares/authenticate.js";
 
 export default async function handler(req, res) {
+  jsonParserMiddleware(req, res);
+  hashPasswordMiddleware(req, res, next);
+  authenticateMiddleware(req, res, next);
   console.log("registering");
   const { firstName, lastName, email, password } = req.body;
   const hashedInput = await hashPassword(password);

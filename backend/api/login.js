@@ -5,8 +5,14 @@ import { hashPassword } from "../../middlewares/middleware.js";
 import { getUserFromEmail } from "../../database/queries/dbUserQueries.js";
 import { createSession } from "../../Session/sessionManager.js";
 import { deleteSession } from "../../database/queries/dbAuthQueries.js";
+import jsonParserMiddleware from "../../middlewares/jsonParser.js";
+import hashPasswordMiddleware from "../../middlewares/hashPassword.js";
+import authenticateMiddleware from "../../middlewares/authenticate.js";
 
 export default async function handler(req, res) {
+  jsonParserMiddleware(req, res);
+  hashPasswordMiddleware(req, res, next);
+  authenticateMiddleware(req, res, next);
   const { email, password } = req.body;
 
   try {

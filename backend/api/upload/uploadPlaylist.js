@@ -6,8 +6,14 @@ import {
   insertSongWithCover,
   insertPlaylist,
 } from "../../database/queries/dbFileQueries";
+import jsonParserMiddleware from "../../middlewares/jsonParser.js";
+import hashPasswordMiddleware from "../../middlewares/hashPassword.js";
+import authenticateMiddleware from "../../middlewares/authenticate.js";
 
 export default async function handler(req, res) {
+  jsonParserMiddleware(req, res);
+  hashPasswordMiddleware(req, res, next);
+  authenticateMiddleware(req, res, next);
   upload.single("imageFile")(req, res, async (err) => {
     if (err instanceof multer.MulterError) {
       console.error("Multer error: ", err);

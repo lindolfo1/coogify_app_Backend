@@ -1,7 +1,13 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import { selectSong } from "../../database/queries/dbFileQueries";
+import jsonParserMiddleware from "../../middlewares/jsonParser.js";
+import hashPasswordMiddleware from "../../middlewares/hashPassword.js";
+import authenticateMiddleware from "../../middlewares/authenticate.js";
 
 export default async function handler(req, res) {
+  jsonParserMiddleware(req, res);
+  hashPasswordMiddleware(req, res, next);
+  authenticateMiddleware(req, res, next);
   const { songName } = req.body;
   try {
     const songDetails = await selectSong(songName);
