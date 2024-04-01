@@ -1,4 +1,4 @@
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 
 export default async function hashPasswordMiddleware(request, response, next) {
   try {
