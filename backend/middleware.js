@@ -30,7 +30,7 @@ export default function jsonParserMiddleware(handler) {
 }
 
 // middleware/hashPassword.js
-import bcrypt from "bcrypt";
+import bcrypt from "bcrypt.js";
 
 export default async function hashPasswordMiddleware(req, res, next) {
   try {
