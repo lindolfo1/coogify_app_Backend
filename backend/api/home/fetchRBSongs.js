@@ -1,5 +1,5 @@
-import { selectRBSongs } from "../../database/queries/dbHomeQueries";
-import { errorMessage } from "../../util/utilFunctions";
+import { selectRBSongs } from "../../database/queries/dbHomeQueries.js";
+import { errorMessage } from "../../util/utilFunctions.js";
 import jsonParserMiddleware from "../../middlewares/jsonParser.js";
 import hashPasswordMiddleware from "../../middlewares/hashPassword.js";
 import authenticateMiddleware from "../../middlewares/authenticate.js";

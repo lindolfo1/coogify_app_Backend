@@ -1,4 +1,4 @@
-import { selectSong } from "../../database/queries/dbFileQueries";
+import { selectSong } from "../../database/queries/dbFileQueries.js";
 import jsonParserMiddleware from "../../middlewares/jsonParser.js";
 import hashPasswordMiddleware from "../../middlewares/hashPassword.js";
 import authenticateMiddleware from "../../middlewares/authenticate.js";

@@ -1,6 +1,6 @@
 import multer from "multer";
-import { baseURL, storage, upload } from "../../util/uploadUtilFunctions";
-import { extractUserID, extractArtistID } from "../../util/utilFunctions";
+import { baseURL, storage, upload } from "../../util/uploadUtilFunctions.js";
+import { extractUserID, extractArtistID } from "../../util/utilFunctions.js";
 import {
   insertSongWithCover,
   insertPlaylist,
