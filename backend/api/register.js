@@ -10,6 +10,7 @@ import authenticateMiddleware from "../middlewares/authenticate.js";
 export default async function handler(req, res) {
   jsonParserMiddleware(req, res);
   hashPasswordMiddleware(req, res);
+  
   authenticateMiddleware(req, res);
   console.log("registering");
   const { firstName, lastName, email, password } = req.body;
