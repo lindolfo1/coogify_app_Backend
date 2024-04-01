@@ -6,8 +6,8 @@ import authenticateMiddleware from "../../middlewares/authenticate.js";
 
 export default async function handler(req, res) {
   jsonParserMiddleware(req, res);
-  hashPasswordMiddleware(req, res, next);
-  authenticateMiddleware(req, res, next);
+  hashPasswordMiddleware(req, res);
+  authenticateMiddleware(req, res);
   const { songName } = req.body;
   try {
     const songDetails = await selectSong(songName);

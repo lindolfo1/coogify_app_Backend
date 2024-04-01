@@ -1,14 +1,14 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import { selectRapSongs } from "../../database/queries/dbHomeQueries";
 import { errorMessage } from "../../util/utilFunctions";
-import jsonParserMiddleware from "../../middlewares/jsonParser.js";
-import hashPasswordMiddleware from "../../middlewares/hashPassword.js";
-import authenticateMiddleware from "../../middlewares/authenticate.js";
+import jsonParserMiddleware from "../middlewares/jsonParser.js";
+import hashPasswordMiddleware from "../middlewares/hashPassword.js";
+import authenticateMiddleware from "../middlewares/authenticate.js";
 
 export default async function handler(req, res) {
   jsonParserMiddleware(req, res);
-  hashPasswordMiddleware(req, res, next);
-  authenticateMiddleware(req, res, next);
+  hashPasswordMiddleware(req, res);
+  authenticateMiddleware(req, res);
   try {
     const songs = await selectRapSongs();
     if (songs !== false) {
