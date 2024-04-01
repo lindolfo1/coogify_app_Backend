@@ -1,63 +1,63 @@
 // middleware/jsonParser.js
 export default function jsonParserMiddleware(handler) {
-  return async (req, res) => {
+  return async (request, response) => {
     try {
-      if (req.headers["content-type"] === "application/json") {
+      if (request.headers["content-type"] === "application/json") {
         let body = "";
-        req.on("data", (chunk) => {
+        request.on("data", (chunk) => {
           body += chunk.toString();
         });
 
-        req.on("end", () => {
+        request.on("end", () => {
           try {
-            req.body = JSON.parse(body); // Parse the JSON data and assign it to req.body
-            handler(req, res); // Call the next middleware or route handler
+            request.body = JSON.parse(body); // Parse the JSON data and assign it to req.body
+            handler(request, response); // Call the next middleware or route handler
           } catch (error) {
             console.error("Error parsing JSON:", error);
-            res.status(400).send("Invalid JSON data");
+            response.status(400).send("Invalid JSON data");
           }
         });
       } else {
         // If content type is not JSON, continue to the next middleware or route handler
-        handler(req, res);
+        handler(request, response);
       }
     } catch (error) {
       console.error("Error in jsonParser:", error);
       // Call the error handling middleware
-      res.status(500).send("Internal Server Error");
+      response.status(500).send("Internal Server Error");
     }
   };
 }
 
 // middleware/hashPassword.js
-import bcryptjs from "bcrypt.js";
+import bcrypt from 'bcryptjs';
 
-export default async function hashPasswordMiddleware(req, res, next) {
+export default async function hashPasswordMiddleware(request, response, next) {
   try {
     // Check if the request method is POST and if JSON data exists
     if (
-      req.method === "POST" &&
-      req.headers["content-type"] === "application/json" &&
-      req.body.password
+      request.method === "POST" &&
+      request.headers["content-type"] === "application/json" &&
+      request.body.password
     ) {
-      const hashedPassword = await bcryptjs.hash(req.body.password, 10); // Hash the password
-      req.body.password = hashedPassword; // Update the password field with the hashed password
+      const hashedPassword = await bcrypt.hash(request.body.password, 10); // Hash the password
+      request.body.password = hashedPassword; // Update the password field with the hashed password
     }
     // Call the next middleware or route handler
     next();
   } catch (error) {
     console.error("Error in hashPasswordMiddleware:", error);
     // Call the error handling middleware
-    res.status(500).send("Internal Server Error");
+    response.status(500).send("Internal Server Error");
   }
 }
 
 // middleware/authenticate.js
 import { sessionExists } from "../Session/sessionManager.js";
 
-export default async function authenticate(req, res, next) {
+export default async function authenticateMiddleware(request, response, next) {
   console.log("authenticating");
-  const path = new URL(req.url, `http://${process.env.MYSQL_HOST}`).pathname;
+  const path = new URL(request.url, `http://${process.env.MYSQL_HOST}`).pathname;
   console.log(path);
 
   // Check if the request path is not login or register
@@ -65,10 +65,10 @@ export default async function authenticate(req, res, next) {
     console.log("not in login or register");
 
     // Check if the Authorization header is present
-    const authHeader = req.headers["authorization"];
+    const authHeader = request.headers["authorization"];
     console.log(authHeader);
     if (!authHeader) {
-      unauthorized(req, res);
+      unauthorized(response);
       return;
     }
 
@@ -79,11 +79,11 @@ export default async function authenticate(req, res, next) {
     try {
       const exists = await sessionExists(sessionID);
       if (!exists) {
-        unauthorized(req, res);
+        unauthorized(response);
         return;
       }
     } catch (err) {
-      unauthorized(req, res);
+      unauthorized(response);
       return;
     }
   }
@@ -91,10 +91,9 @@ export default async function authenticate(req, res, next) {
   next();
 }
 
-function unauthorized(req, res) {
-  res.status(401).send("Unauthorized");
+function unauthorized(response) {
+  response.status(401).send("Unauthorized");
 }
-
 
 
 
