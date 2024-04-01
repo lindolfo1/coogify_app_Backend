@@ -13,18 +13,18 @@ function generateSessionId() {
   return sessionId;
 }
 
-export async function createSession(user_id) {
+export default async function createSession(user_id) {
   const session = await generateSessionId();
   if (makeSession(user_id, session)) return session;
   else return null;
 }
 
-export async function destroySession(user) {
+export default async function destroySession(user) {
   if (deleteSession(user)) return true;
   return false;
 }
 
-export async function sessionExists(session) {
+export default async function sessionExists(session) {
   const user = await getUserFromSession(session);
   if (user !== null) return true;
   else return false;
