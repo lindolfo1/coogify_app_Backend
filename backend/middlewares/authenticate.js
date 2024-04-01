@@ -1,4 +1,4 @@
-export default async function authenticateMiddleware(request, response, next) {
+export default async function authenticateMiddleware(request, response) {
   console.log("authenticating");
   const path = new URL(request.url, `http://${process.env.MYSQL_HOST}`)
     .pathname;
@@ -31,8 +31,6 @@ export default async function authenticateMiddleware(request, response, next) {
       return;
     }
   }
-
-  next();
 }
 
 function unauthorized(response) {
