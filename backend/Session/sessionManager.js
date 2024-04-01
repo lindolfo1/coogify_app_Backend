@@ -25,6 +25,7 @@ export async function destroySession(user) {
 }
 
 export async function sessionExists(session) {
+  console.log('checking session existence');
   const user = await getUserFromSession(session);
   if (user !== null) return true;
   else return false;
