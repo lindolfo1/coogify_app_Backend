@@ -30,7 +30,7 @@ export default function jsonParserMiddleware(handler) {
 }
 
 // middleware/hashPassword.js
-import bcrypt from "bcrypt.js";
+import bcryptjs from "bcrypt.js";
 
 export default async function hashPasswordMiddleware(req, res, next) {
   try {
@@ -40,7 +40,7 @@ export default async function hashPasswordMiddleware(req, res, next) {
       req.headers["content-type"] === "application/json" &&
       req.body.password
     ) {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10); // Hash the password
+      const hashedPassword = await bcryptjs.hash(req.body.password, 10); // Hash the password
       req.body.password = hashedPassword; // Update the password field with the hashed password
     }
     // Call the next middleware or route handler
