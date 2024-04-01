@@ -1,4 +1,3 @@
-import { VercelRequest, VercelResponse } from "@vercel/node";
 import bcrypt from "bcrypt";
 import * as logregq from "../../database/queries/dbLoginRegQueries.js";
 import { hashPassword } from "../util/utilFunctions.js";

@@ -1,4 +1,3 @@
-import { VercelRequest, VercelResponse } from "@vercel/node";
 import { selectNewestSongs } from "../../database/queries/dbHomeQueries";
 import { errorMessage } from "../../util/utilFunctions";
 import jsonParserMiddleware from "../../middlewares/jsonParser.js";

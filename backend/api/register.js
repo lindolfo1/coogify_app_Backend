@@ -1,4 +1,3 @@
-// import { NowRequest, NowResponse } from "@vercel/node";
 import * as logregq from "../database/queries/dbLoginRegQueries.js";
 import { hashPassword } from "../util/utilFunctions.js";
 import { createSession } from "../Session/sessionManager.js";

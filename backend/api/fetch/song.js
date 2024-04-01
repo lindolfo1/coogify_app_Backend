@@ -1,4 +1,3 @@
-import { VercelRequest, VercelResponse } from "@vercel/node";
 import { selectSong } from "../../database/queries/dbFileQueries";
 import jsonParserMiddleware from "../../middlewares/jsonParser.js";
 import hashPasswordMiddleware from "../../middlewares/hashPassword.js";
