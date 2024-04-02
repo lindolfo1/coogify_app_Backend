@@ -1,9 +1,9 @@
 import bcrypt from "bcrypt";
-import * as logregq from "../../database/queries/dbLoginRegQueries.js";
+import * as logregq from "../database/queries/dbLoginRegQueries.js";
 import { hashPassword } from "../util/utilFunctions.js";
-import { getUserFromEmail } from "../../database/queries/dbUserQueries.js";
-import { createSession } from "../../Session/sessionManager.js";
-import { deleteSession } from "../../database/queries/dbAuthQueries.js";
+import { getUserFromEmail } from "../database/queries/dbUserQueries.js";
+import { createSession } from "../Session/sessionManager.js";
+import { deleteSession } from "../database/queries/dbAuthQueries.js";
 import jsonParserMiddleware from  "../middlewares/jsonParser.js";
 import hashPasswordMiddleware from "../middlewares/hashPassword.js";
 import authenticateMiddleware from "../middlewares/authenticate.js";
