@@ -1,5 +1,5 @@
 import pool from "../dbConnection.js";
-import { test } from "../dbConnection.js";
+
 
 export async function 
 registerUser(email, userPassword, fName, lName, dob) {
