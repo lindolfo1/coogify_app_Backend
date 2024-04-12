@@ -3,6 +3,17 @@
 
 import pool from '../dbConnection.js';
 
+export async function testQuery(id) {
+  const [rows] = await pool.query(
+    `
+  SELECT *
+  FROM ADMIN
+  WHERE adminID = ?`,
+    [id]
+  );
+  return rows;
+}
+
 export async function getUserFromSession(session_promise) {
   const session = await session_promise;
 
