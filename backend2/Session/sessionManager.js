@@ -1,15 +1,15 @@
-import crypto from 'crypto';
+import crypto from "crypto";
 import {
   deleteSession,
   getUserFromSession,
   makeSession,
-} from '../database/queries/dbAuthQueries.js';
+} from "../database/queries/dbAuthQueries.js";
 
 function generateSessionId() {
   // Generate 16 bytes of random data
   const randomBytes = crypto.randomBytes(16);
   // Convert random bytes to a hexadecimal string
-  const sessionId = randomBytes.toString('hex');
+  const sessionId = randomBytes.toString("hex");
   return sessionId;
 }
 
@@ -25,6 +25,7 @@ export async function destroySession(user) {
 }
 
 export async function sessionExists(session) {
+  console.log('checking session existence');
   const user = await getUserFromSession(session);
   if (user !== null) return true;
   else return false;

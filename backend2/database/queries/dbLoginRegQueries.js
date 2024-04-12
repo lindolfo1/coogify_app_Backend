@@ -1,6 +1,9 @@
-import pool from '../dbConnection.js';
+import pool from "../dbConnection.js";
 
-export async function registerUser(email, userPassword, fName, lName, dob) {
+
+export async function 
+registerUser(email, userPassword, fName, lName, dob) {
+  console.log("register user");
   try {
     const [rows] = await pool.query(
       `INSERT INTO USER 
@@ -8,7 +11,8 @@ export async function registerUser(email, userPassword, fName, lName, dob) {
        VALUES (?, ?, ?, ?, ?)`,
       [email, userPassword, fName, lName, dob]
     );
-    console.log('User inserted successfully');
+    console.log("User inserted successfully");
+    console.log(rows);
 
     // Extract the userID
     const userID = rows.insertId;
@@ -18,7 +22,7 @@ export async function registerUser(email, userPassword, fName, lName, dob) {
       `INSERT INTO SUBSCRIPTION 
        (userID, subscriptionType, subcriptionActive, renewDate)
        VALUES (?, ?, ?, CURRENT_TIMESTAMP)`,
-      [userID, 'Paid', 0] // Fix the column name from 'subcriptionActive' to 'subscriptionActive'
+      [userID, "Paid", 0] // Fix the column name from 'subcriptionActive' to 'subscriptionActive'
     );
 
     return true;
@@ -27,7 +31,6 @@ export async function registerUser(email, userPassword, fName, lName, dob) {
     return false;
   }
 }
-
 
 export async function getPasswordByEmail(email) {
   try {
@@ -38,30 +41,14 @@ export async function getPasswordByEmail(email) {
 
     if (rows.length > 0) {
       const hashedPassword = rows[0].userPassword;
-      console.log('Fetched Password');
+      console.log("Fetched Password");
       return hashedPassword; // Return the hashed password
     } else {
       // No matching email found in the database
       return null; // Or you can throw an error if you prefer
     }
   } catch (err) {
-    console.error('Error fetching password:', err.message);
+    console.error("Error fetching password:", err.message);
     return null; // Or you can throw an error if you prefer
   }
 }
-
-// export async function registerUser(email, userPassword, fName, lName, dob) {
-//   try {
-//     const [rows] = await pool.query(
-//       `INSERT INTO USER
-//     (email, userPassword, firstName, lastName, dateOfBirth)
-//      VALUES (?, ?, ?, ?, ?)`,
-//       [email, userPassword, fName, lName, dob]
-//     );
-//     console.log('User inserted successfully');
-//     return true;
-//   } catch (err) {
-//     console.error(err.message);
-//     return false;
-//   }
-// }
